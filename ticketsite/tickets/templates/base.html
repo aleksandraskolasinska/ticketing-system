@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Tickets{% endblock %}</title>
+  </head>
+  <body>
+    <div>
+      <a>Ticketing</a>
+      <div>
+        <a href="{% url 'ticketsapp:index' %}"> Tickets</a>
+        
+        <a href="/admin/" class="sel">Admin Site</a>
+      </div>
+    </div>
+    <div>{% block content %}{% endblock %}</div>
+  </body>
+</html>
