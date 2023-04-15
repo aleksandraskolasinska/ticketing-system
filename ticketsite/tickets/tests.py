@@ -35,4 +35,18 @@ class TicketModelTests(TestCase):
         old_ticket = Ticket(publication_date=time)
         self.assertIs(old_ticket.was_published_recently(), False)
 
+def createTicket(title, ticket_content):
+    """
+    Create a ticket
+    """
+    return Ticket.objects.create(title=title, ticket_content=ticket_content)
 
+
+class TicketWithMissingData(TestCase):
+
+    def test_ticket_correct_ticket(self):
+        """
+        Ticket with added title and content returns True for checking if valid.
+        """
+        ticket = createTicket(title='title', ticket_content='aaa')
+        self.assertTrue(ticket.is_valid())
