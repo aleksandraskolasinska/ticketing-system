@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.views import generic
 from django.urls import reverse
@@ -21,10 +21,6 @@ def ticketView(request, ticket_id):
     ticket = Ticket.objects.get(pk=ticket_id)
     return render(request, 'ticketView.html', {'ticket':ticket})
 
-def testview(request):
-    test = Ticket.objects.order_by('publication_date')[:1]
-    return render(request, 'test.html', {'test': test})
-
 def create_ticket(request):
     if request.method == 'POST':
         form = TicketForm(request.POST)
@@ -33,7 +29,7 @@ def create_ticket(request):
             ticket.assignee = request.user
             # ticket.created_by = request.user
             ticket.save()
-            return redirect('ticketView', ticket.id)
+            return HttpResponseRedirect(reverse('ticketsapp:ticketView', args=(ticket.id,)))
     else:
         form = TicketForm()
     return render(request, 'create_ticket.html', {'form': form})
