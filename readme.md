@@ -17,4 +17,4 @@
     docker compose down
 
 
-Note: docker compose is configured to use docker volume. This will persist between `docker up` and `docker down` and docker down commands.
+Note: docker compose is configured to use docker volume. This will persist between `docker up` and `docker down` commands.
