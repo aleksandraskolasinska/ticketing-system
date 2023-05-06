@@ -5,6 +5,8 @@ from django.urls import reverse
 
 from .models import Ticket
 from .forms import TicketForm
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -21,6 +23,7 @@ def ticketView(request, ticket_id):
     ticket = Ticket.objects.get(pk=ticket_id)
     return render(request, 'ticketView.html', {'ticket':ticket})
 
+@login_required
 def create_ticket(request):
     if request.method == 'POST':
         form = TicketForm(request.POST)
@@ -33,3 +36,9 @@ def create_ticket(request):
     else:
         form = TicketForm()
     return render(request, 'create_ticket.html', {'form': form})
+
+class LoginView(LoginView):
+    template_name = 'registration/login.html'
+
+class LogoutView(LogoutView):
+    template_name = 'registration/logout.html'
