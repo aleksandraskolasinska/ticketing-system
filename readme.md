@@ -1,20 +1,27 @@
-# Docker
+# Ticketing system
 
- ## Using Docker Compose
+Practice project for a ticketing system using Django and database in postgres. 
 
-    docker compose up -d
-    docker compose exec web python manage.py migrate
-    docker compose exec web python manage.py test
+## Docker
 
+ ### Using Docker Compose
 
-## Create superuser to login
+```bash
+docker compose up -d
+docker compose exec web python manage.py migrate
+docker compose exec web python manage.py test
+```
 
-    docker compose exec -it web python manage.py createsuperuser
+### Create superuser to login
 
+```bash
+docker compose exec -it web python manage.py createsuperuser
+```
 
-## Take it down
+### Take it down
 
-    docker compose down
-
+```bash
+docker compose down
+```
 
 Note: docker compose is configured to use docker volume. This will persist between `docker up` and `docker down` commands.
