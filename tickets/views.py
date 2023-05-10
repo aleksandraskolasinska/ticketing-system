@@ -4,7 +4,7 @@ from django.views import generic
 from django.urls import reverse
 
 from .models import Ticket
-from .forms import TicketForm
+from .forms import TicketForm, SignUpForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 
@@ -42,3 +42,13 @@ class LoginView(LoginView):
 
 class LogoutView(LogoutView):
     template_name = 'registration/logout.html'
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = SignUpForm()
+    return render(request, 'signup.html', {'form':form})

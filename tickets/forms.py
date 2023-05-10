@@ -8,3 +8,10 @@ class TicketForm(forms.ModelForm):
         model = Ticket
         fields = ['title', 'ticket_content']
 
+class SignUpForm(UserCreationForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
+
