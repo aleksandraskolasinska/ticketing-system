@@ -24,4 +24,9 @@ docker compose exec -it web python manage.py createsuperuser
 docker compose down
 ```
 
-Note: docker compose is configured to use docker volume. This will persist between `docker up` and `docker down` commands.
+Note: docker compose is configured to use docker volume. This will persist between `docker up` and `docker down` commands. 
+
+In case the database needs to be deleted:
+```bash
+docker compose down --volumes my_db_data
+```
