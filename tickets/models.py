@@ -14,8 +14,8 @@ class TicketStatus(models.TextChoices):
 
 class Ticket(models.Model):
     title = models.CharField(max_length=150)
-    assignee = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)#, related_name="%(app_label)s_%(class)s_created_tickets")#limit_choices_to={'is_staff': True}
-    # created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="%(app_label)s_%(class)s_assigned_tickets")
+    assignee = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True, related_name="%(app_label)s_%(class)s_created_tickets")#limit_choices_to={'is_staff': True}
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="%(app_label)s_%(class)s_assigned_tickets", default=None)
     status = models.CharField(max_length=20, choices=TicketStatus.choices, default=TicketStatus.to_do)
     publication_date = models.DateTimeField('date published', auto_now_add = True)
     update_date = models.DateTimeField('date of update', auto_now = True)
@@ -23,6 +23,12 @@ class Ticket(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            #Set created_by only if new ticket
+            self.created_by = kwargs.pop('user', None)
+        super().save(*args, **kwargs)
 
     def was_published_recently(self):
         now = timezone.now()
