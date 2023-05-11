@@ -19,6 +19,11 @@ def index(request):
     context = {'tickets': tickets}
     return render(request, 'index.html', context)
 
+def home(request):
+    tickets = Ticket.objects.order_by('publication_date')[:5]
+    context = {'tickets': tickets}
+    return render(request, 'home.html', context)
+
 def ticketView(request, ticket_id):
     ticket = Ticket.objects.get(pk=ticket_id)
     return render(request, 'ticketView.html', {'ticket':ticket})
