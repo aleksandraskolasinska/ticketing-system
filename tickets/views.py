@@ -34,9 +34,10 @@ def create_ticket(request):
         form = TicketForm(request.POST)
         if form.is_valid():
             ticket = form.save(commit=False)
-            ticket.assignee = request.user
+            # ticket.assignee = request.user
             # ticket.created_by = request.user
-            ticket.save()
+            # ticket.save()
+            ticket.save(user=request.user)
             return HttpResponseRedirect(reverse('ticketsapp:ticketView', args=(ticket.id,)))
     else:
         form = TicketForm()
