@@ -3,3 +3,7 @@ click
 Django==4.1.7
 psycopg2 
 python-dotenv 
+pytest
+pytest-django
+pytest-benchmark
+requests
