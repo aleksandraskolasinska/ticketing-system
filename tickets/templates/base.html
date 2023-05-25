@@ -19,31 +19,41 @@
 
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'logout' %}"> Logout </a>
+                  <a class="nav-link" href="{% url 'ticketsapp:create_ticket' %}">Create a ticket</a>
                 </li>
-                {% else %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'login' %}"> Login </a>
+                  <a class="nav-link" href="{% url 'ticketsapp:index' %}"> View submitted tickets </a>
                 </li>
                 {% endif %}
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
+
+                </ul>
+
+                {% if user.is_authenticated %}
+              <ul class="navbar-nav mr-right">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
+                    Account
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
                   </div>
                 </li>
+                {% else %}
+                </ul>
+                <ul class="navbar-nav mr-right">
                 <li class="nav-item">
-                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  <a class="nav-link" href="{% url 'login' %}"> Log in </a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'ticketsapp:signup' %}"> Sign up </a>
+                </li>
+                </ul>
+                {% endif %}
               </ul>
+
               <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
