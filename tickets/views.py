@@ -11,22 +11,23 @@ from .models import Ticket
 from .forms import TicketForm, SignUpForm, UsernameUpdateForm, PasswordUpdateForm, EmailUpdateForm, FirstNameUpdateForm, LastNameUpdateForm
 
 
-# Create your views here.
 
-# class IndexView(generic.ListView):
-#     template_name = 'tickets/index.html'
-#     context_object_name = 'latest_tickets_list'
+def home(request):
 
+    return render(request, 'home.html', context)
+
+@login_required
 def index(request):
-    tickets = Ticket.objects.order_by('publication_date')[:5]
+    user = request.user
+
+    tickets = Ticket.objects.filter(created_by=user)
+
     context = {'tickets': tickets}
     return render(request, 'index.html', context)
 
-def home(request):
-    tickets = Ticket.objects.order_by('publication_date')[:5]
-    context = {'tickets': tickets}
-    return render(request, 'home.html', context)
 
+
+@login_required
 def ticketView(request, ticket_id):
     ticket = Ticket.objects.get(pk=ticket_id)
     return render(request, 'ticketView.html', {'ticket':ticket})
