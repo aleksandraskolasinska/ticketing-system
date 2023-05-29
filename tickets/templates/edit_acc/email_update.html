@@ -1,0 +1,8 @@
+<h1>Update Email</h1>
+
+<p>Current email: {{ user.email }}</p>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Update</button>
+</form>

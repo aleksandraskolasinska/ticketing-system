@@ -1,0 +1,8 @@
+<h1>Update Last Name</h1>
+
+<p>Current last name: {{ user.last_name }}</p>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Update</button>
+</form>
