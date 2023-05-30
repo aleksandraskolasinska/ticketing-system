@@ -14,7 +14,7 @@ from .forms import TicketForm, SignUpForm, UsernameUpdateForm, PasswordUpdateFor
 
 def home(request):
 
-    return render(request, 'home.html', context)
+    return render(request, 'home.html')
 
 @login_required
 def index(request):
@@ -24,7 +24,6 @@ def index(request):
 
     context = {'tickets': tickets}
     return render(request, 'index.html', context)
-
 
 
 @login_required
