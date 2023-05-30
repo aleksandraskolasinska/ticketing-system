@@ -8,6 +8,7 @@
     - [admin site](#admin-site)
 
 - [User manual](#user-manual)
+- [Administrator manual](#administrator-manual)
 
 # Ticketing system
 
@@ -20,7 +21,7 @@ Application is currently still in development, the documentation as well as how 
 This project uses Docker. By default the development server runs on
 - http://127.0.0.1:8000/
 
-To run the app follow the commands listed below
+To run the app follow the commands listed below:
 
  ## Using Docker Compose
 
@@ -38,7 +39,7 @@ docker compose exec -it web python manage.py createsuperuser
 ```
 and follow the terminal instructions.
 
-## Take it down
+## Take the server down
 To take the app down run:
 
 ```bash
@@ -97,6 +98,22 @@ To create a ticket simply go to `create a ticket` located on the dashboard and f
 
 ## Tracking tickets
 
-Tickets can be tracked via the `View sumbited tickets` tab visible on the dashboard. 
+Tickets can be tracked via the `View sumbited tickets` tab visible on the dashboard. To see details as well as add more information 
 
 ![image](/readme_files/tracking_tickets.png)
+
+# Administrator manual
+
+## Accessing the admin panel
+
+If the user has the staff status then after being logged in they will be able to visit
+
+- http://127.0.0.1:8000/admin
+
+and see a redirection to the panel in the Account tab on the dashboard
+
+![image](/readme_files/admin_panel.png)
+
+## Admin panel
+
+In the tickets category in the admin panel, staff will be able to see all tickets, their statuses and when they were last updated.
