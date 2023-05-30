@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db import models
 from django.contrib.auth.models import User
-from .models import Ticket, TicketAssign
+from .models import Ticket, TicketAssign, TicketReply
 
 
 class TicketAdmin(admin.ModelAdmin):
@@ -11,6 +11,13 @@ class TicketAdmin(admin.ModelAdmin):
         if not obj.pk:
             obj.created_by = request.user
         super().save_model(request, obj, form, change)
+    
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        if obj:
+            form.base_fields['assignee'].disabled = True
+            form.base_fields['status'].disabled = True
+        return form
 
 class TicketStaff(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

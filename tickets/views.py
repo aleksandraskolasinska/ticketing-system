@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.views import generic
 from django.urls import reverse, reverse_lazy
@@ -7,8 +7,8 @@ from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.contrib.auth.decorators import login_required
 
 
-from .models import Ticket
-from .forms import TicketForm, SignUpForm, UsernameUpdateForm, PasswordUpdateForm, EmailUpdateForm, FirstNameUpdateForm, LastNameUpdateForm
+from .models import Ticket, TicketReply
+from .forms import TicketForm, SignUpForm, UsernameUpdateForm, PasswordUpdateForm, EmailUpdateForm, FirstNameUpdateForm, LastNameUpdateForm, TicketReplyForm
 
 
 
@@ -28,8 +28,24 @@ def index(request):
 
 @login_required
 def ticketView(request, ticket_id):
-    ticket = Ticket.objects.get(pk=ticket_id)
-    return render(request, 'ticketView.html', {'ticket':ticket})
+    ticket = get_object_or_404(Ticket, id=ticket_id)
+    assignee = ticket.assignee
+    replies = ticket.get_replies()
+
+    if request.method == 'POST':
+        form = TicketReplyForm(request.POST)
+        if form.is_valid():
+            reply = form.save(commit=False)
+            reply.ticket = ticket
+            reply.user = request.user
+            reply.save()
+
+            return redirect('ticketsapp:ticketView', ticket_id=ticket_id)
+    else:
+        form = TicketReplyForm()
+    return render(request, 'ticketView.html', {'ticket':ticket, 'form':form, 'replies': replies})
+
+
 
 @login_required
 def create_ticket(request):

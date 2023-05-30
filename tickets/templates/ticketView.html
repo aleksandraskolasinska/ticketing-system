@@ -5,38 +5,61 @@
     <h2>Ticket #{{ticket.id}}</h2>
     <tbody>
       <tr>
-        <td>Title</td>
-        <td>{{ticket.title}}</td>
+        <td> Title </td>
+        <td> {{ticket.title}} </td>
       </tr>
       <tr>
-        <td>Description</td>
-        <td>{{ticket.ticket_content}}</td>
+        <td> Description </td>
+        <td> {{ticket.ticket_content}} </td>
       </tr>
       <tr>
-        <td>Status</td>
-        <td>{{ticket.status}}</td>
+        <td> Status </td>
+        <td> {{ticket.status}} </td>
       </tr>
       <tr>
-        <td>Assignee</td>
-        <td>{{ticket.assignee}}</td>
+        <td> Assignee </td>
+        <td> {{ticket.assignee}} </td>
       </tr>
       <tr>
-        <td>Created by</td>
-        <td>{{ticket.created_by}}</td>
+        <td> Created by </td>
+        <td> {{ticket.created_by}} </td>
       </tr>
       <tr>
-        <td>Description</td>
-        <td>{{ticket.ticket_content}}</td>
+        <td> Description </td>
+        <td> {{ticket.ticket_content}} </td>
       </tr>
       <tr>
-        <td>Created At</td>
-        <td>{{ticket.publication_date}}</td>
+        <td> Created At </td>
+        <td> {{ticket.publication_date}} </td>
       </tr>
       <tr>
-        <td>Updated At</td>
-        <td>{{ticket.update_date}}</td>
+        <td> Updated At </td>
+        <td> {{ticket.update_date}} </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+{% if assignee %}
+<h3>Assignee Details</h3>
+<p>{{ assignee.username }}</p>
+<p>{{ assignee.email }}</p>
+{% endif %}
+
+<h3>Replies</h3>
+{% for reply in replies %}
+<div class="reply">
+  <p><strong>{{ reply.user.username }}</strong> - {{ reply.timestamp }}</p>
+  <p>{{ reply.message }}</p>
+</div>
+{% endfor %}
+
+<h3>Add more:</h3>
+<form method="POST" action="{% url 'ticketsapp:ticketView' ticket_id=ticket.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Reply</button>
+</form>
+
+
 {% endblock %}

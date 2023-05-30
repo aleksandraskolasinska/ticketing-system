@@ -1,5 +1,5 @@
 from django import forms
-from .models import Ticket
+from .models import Ticket, TicketReply
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, UserChangeForm
 from django.contrib.auth.models import User
 
@@ -8,12 +8,19 @@ class TicketForm(forms.ModelForm):
         model = Ticket
         fields = ['title', 'ticket_content']
 
+class TicketReplyForm(forms.ModelForm):
+    class Meta:
+        model = TicketReply
+        fields = ['message']
+
 class SignUpForm(UserCreationForm):
     email = forms.EmailField()
 
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
+
+    
 
 # class AccountForm(UserChangeForm):
 #     password_change = PasswordChangeForm
