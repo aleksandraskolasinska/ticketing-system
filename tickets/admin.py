@@ -10,21 +10,27 @@ class TicketReplyInline(admin.StackedInline):
 class TicketAdmin(admin.ModelAdmin):
     list_display = ('title', 'assignee', 'created_by', 'status', 'publication_date', 'update_date')
     inlines = [TicketReplyInline]
+    # readonly_fields = ['replies']
 
     def save_model(self, request, obj, form, change):
         if not obj.pk:
             obj.created_by = request.user
         super().save_model(request, obj, form, change)
   
-    # def get_form(self, request, obj=None, **kwargs):
-    #     form = super().get_form(request, obj, **kwargs)
+    # def get_readonly_fields(self, request, obj=None):
     #     if obj:
-    #         form.base_fields['assignee'].disabled = True
-    #         form.base_fields['status'].disabled = True
-    #     return form
+    #         return self.readonly_fields + ['replies']
+    #     return self.readonly_fields
     
 class TicketReplyAdmin(admin.ModelAdmin):
     list_display = ['ticket', 'user', 'timestamp']
+    readonly_fields = ['user', 'timestamp']
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj and obj.user != request.user:
+            # If the logged-in user is not the author of the reply, make the 'message' field read-only
+            return self.readonly_fields + ['message']
+        return self.readonly_fields
     
 
 class TicketStaff(models.Model):
