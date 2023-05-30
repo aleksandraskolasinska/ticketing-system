@@ -3,21 +3,29 @@ from django.db import models
 from django.contrib.auth.models import User
 from .models import Ticket, TicketAssign, TicketReply
 
+class TicketReplyInline(admin.StackedInline):
+    model = TicketReply
+    extra = 0
 
 class TicketAdmin(admin.ModelAdmin):
     list_display = ('title', 'assignee', 'created_by', 'status', 'publication_date', 'update_date')
+    inlines = [TicketReplyInline]
 
     def save_model(self, request, obj, form, change):
         if not obj.pk:
             obj.created_by = request.user
         super().save_model(request, obj, form, change)
+  
+    # def get_form(self, request, obj=None, **kwargs):
+    #     form = super().get_form(request, obj, **kwargs)
+    #     if obj:
+    #         form.base_fields['assignee'].disabled = True
+    #         form.base_fields['status'].disabled = True
+    #     return form
     
-    def get_form(self, request, obj=None, **kwargs):
-        form = super().get_form(request, obj, **kwargs)
-        if obj:
-            form.base_fields['assignee'].disabled = True
-            form.base_fields['status'].disabled = True
-        return form
+class TicketReplyAdmin(admin.ModelAdmin):
+    list_display = ['ticket', 'user', 'timestamp']
+    
 
 class TicketStaff(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -35,4 +43,5 @@ class TicketStaff(models.Model):
 
 
 # Register your models here.
-admin.site.register(Ticket, TicketAdmin)
+admin.site.register(Ticket, TicketAdmin) 
+admin.site.register(TicketReply, TicketReplyAdmin)
