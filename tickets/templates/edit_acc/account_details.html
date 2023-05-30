@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} Account Details {% endblock %}
+{% block content %}
+
+<h1> Account Details</h1>
+
+<p>Username: {{ user.username }} <a href="{% url 'ticketsapp:username_update' %}">Update Username</a></p> 
+
+<p>Email: {{ user.email }} <a href="{% url 'ticketsapp:email_update' %}">Update Email</a></p>
+
+<p>First Name: {{ user.first_name }} <a href="{% url 'ticketsapp:first_name_update' %}">Update First Name</a></p>
+
+<p>Last Name: {{ user.last_name }} <a href="{% url 'ticketsapp:last_name_update' %}">Update Last Name</a></p>
+
+
+<a href="{% url 'ticketsapp:password_update' %}">Update Password</a>
+
+
+{% endblock %}

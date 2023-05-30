@@ -5,7 +5,12 @@ from .models import Ticket, TicketAssign
 
 
 class TicketAdmin(admin.ModelAdmin):
-    date_hierarchy = 'publication_date'
+    list_display = ('title', 'assignee', 'created_by', 'status', 'publication_date', 'update_date')
+
+    def save_model(self, request, obj, form, change):
+        if not obj.pk:
+            obj.created_by = request.user
+        super().save_model(request, obj, form, change)
 
 class TicketStaff(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
