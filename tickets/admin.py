@@ -6,11 +6,15 @@ from .models import Ticket, TicketAssign, TicketReply
 class TicketReplyInline(admin.StackedInline):
     model = TicketReply
     extra = 0
+    # readonly_fields = ['user', 'message']
+
+    # def has_add_permission(self, request, obj=None):
+    #     return False
 
 class TicketAdmin(admin.ModelAdmin):
     list_display = ('title', 'assignee', 'created_by', 'status', 'publication_date', 'update_date')
     inlines = [TicketReplyInline]
-    readonly_fields = ['created_by', 'status', 'publication_date', 'update_date']
+    readonly_fields = ['created_by', 'publication_date', 'update_date']
 
 
     def save_model(self, request, obj, form, change):
