@@ -4,21 +4,21 @@
 <table>
  <thead>
     <tr>
-      <th>Ticket title</th>
-      <th>Status</th>
-      <th>Assignee</th>
-      <th>Published</th>
-      <th>Last Updated</th>
+      <th> Ticket title </th>
+      <th> Status     ` </th>
+      <th> Assignee      `</th>
+      <th> Published </th>
+      <th> Last Updated </th>
     </tr>
   </thead>
   <tbody>
    {% for ticket in tickets %}
     <tr>
-      <td><a href="{% url 'ticketsapp:ticketView' ticket.id %}">{{ ticket.title }}</a></td>
-      <td>{{ ticket.status }}</td>
-      <td>{{ ticket.assignee }}</td>
-      <td>{{ ticket.publication_date }}</td>
-      <td>{{ ticket.update_date }}</td>
+      <td><a href="{% url 'ticketsapp:ticketView' ticket.id %}"> {{ ticket.title }} </a></td>
+      <td> {{ ticket.status }} </td>
+      <td> {{ ticket.assignee }} </td>
+      <td> {{ ticket.publication_date }} </td>
+      <td> {{ ticket.update_date }} </td>
     </tr>
     {% endfor %}
    </tbody>
