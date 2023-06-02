@@ -2,18 +2,34 @@
 {% block title %} Account Details {% endblock %}
 {% block content %}
 
-<h1> Account Details</h1>
+<h1 class="account-heading">Account Details</h1>
 
-<p>Username: {{ user.username }} <a href="{% url 'ticketsapp:username_update' %}">Update Username</a></p> 
+<div class="account-details">
+  <p class="detail">
+    <span class="account-label">Username:</span>
+    <span class="account-value">{{ user.username }}</span>
+    <a href="{% url 'ticketsapp:username_update' %}" class="account-update-link">Update</a>
+  </p>
 
-<p>Email: {{ user.email }} <a href="{% url 'ticketsapp:email_update' %}">Update Email</a></p>
+  <p class="detail">
+    <span class="account-label">Email:</span>
+    <span class="account-value">{{ user.email }}</span>
+    <a href="{% url 'ticketsapp:email_update' %}" class="account-update-link">Update</a>
+  </p>
 
-<p>First Name: {{ user.first_name }} <a href="{% url 'ticketsapp:first_name_update' %}">Update First Name</a></p>
+  <p class="detail">
+    <span class="account-label">First Name:</span>
+    <span class="account-value">{{ user.first_name }}</span>
+    <a href="{% url 'ticketsapp:first_name_update' %}" class="account-update-link">Update</a>
+  </p>
 
-<p>Last Name: {{ user.last_name }} <a href="{% url 'ticketsapp:last_name_update' %}">Update Last Name</a></p>
+  <p class="detail">
+    <span class="account-label">Last Name:</span>
+    <span class="account-value">{{ user.last_name }}</span>
+    <a href="{% url 'ticketsapp:last_name_update' %}" class="account-update-link">Update</a>
+  </p>
 
-
-<a href="{% url 'ticketsapp:password_update' %}">Update Password</a>
-
+  <a href="{% url 'ticketsapp:password_update' %}" class="password-update-link">Update Password</a>
+</div>
 
 {% endblock %}

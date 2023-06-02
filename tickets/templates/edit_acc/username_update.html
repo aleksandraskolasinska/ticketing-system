@@ -1,8 +1,17 @@
-<h1>Update Username</h1>
+{% extends 'base.html' %}
+{% block title %} Update Username {% endblock %}
+{% block content %}
 
-<p>Current username: {{ user.username }}</p>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Update</button>
-</form>
+<div class="update-account-container">
+  <h1 class="update-account-heading">Update username:</h1>
+
+  <span class="current-account">Current username:</span> <span class="current-account-name">{{ user.username }}</span>
+
+  <form method="post" class="update-account-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="update-button">Update</button>
+  </form>
+</div>
+
+{% endblock %}
