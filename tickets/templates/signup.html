@@ -1,10 +1,40 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
+  <form class="signup-form" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
+    <div class="signup-form-container">
+      <h1>Create an Account</h1>
+      {% if form.errors %}
+        <p class="error-message">Please correct the following errors:</p>
+      {% endif %}
+      {{ form.username.label_tag }}
+      {{ form.username }}
+      {% for error in form.username.errors %}
+        <p class="error-message">{{ error }}</p>
+      {% endfor %}
+      
+      {{ form.email.label_tag }}
+      <div class="password-form-group">
+      {{ form.email }}
+      </div>
+      {% for error in form.email.errors %}
+        <p class="error-message">{{ error }}</p>
+      {% endfor %}
+      {{ form.password1.label_tag }}
+      <div class="password-form-group">
+      {{ form.password1 }}
+      </div>
+      {% for error in form.password1.errors %}
+        <p class="error-message">{{ error }}</p>
+      {% endfor %}
+      {{ form.password2.label_tag }}
+      {{ form.password2 }}
+      {% for error in form.password2.errors %}
+        <p class="error-message">{{ error }}</p>
+      {% endfor %}
+      <button type="submit">Sign Up</button>
+    </div>
   </form>
 {% endblock %}

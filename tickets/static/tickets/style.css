@@ -1,0 +1,283 @@
+body {
+  background: white;
+  font-family: 'Lato', sans-serif;
+}
+.index_table {
+  /* margin-left: 40px;
+  width: 60%;
+  border-collapse: collapse;
+  text-align: center; */
+  width: 60%;
+  margin: 0 auto;
+}
+
+.index_table th,
+.index_table td {
+  padding: 10px;
+  /* border: 1px solid #ccc; */
+}
+
+.index_table_header_item {
+  /* margin-right: 50px; */
+  width: 8%;
+  /* padding-right: 50px; */
+}
+
+.index_table_header_item_date {
+  /* margin-right: 50px; */
+  width: 15%;
+  /* padding-right: 50px; */
+}
+
+.index_table_header_names {
+  
+}
+
+.index_table_container {
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.ticketView-page {
+  margin-left: 30px;
+  margin-right: 70px;
+}
+
+.ticketView_table {
+  /* width: 600px; */
+  margin: 10px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.ticketView_table th,
+.ticketView_table td {
+  padding: 6px;
+  padding-right: 12px;
+  /* border: 1px solid #ccc; */
+}
+
+.ticketView-headers {
+  padding-top: 10px;
+  font-weight: 700;
+}
+
+.bold-title {
+  font-weight: 700;
+}
+
+.normal-text {
+  font-weight: 300;
+}
+
+.home-page-text {
+  float:left;
+  width: 100%;
+  margin-top: 40px;
+  text-align: center;
+  color: rgb(17, 12, 40);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+
+
+.force-width {
+  /* width: 150px; */
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 9px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px;
+}
+
+.create-ticket-container{
+  padding-top: 20px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.reply-ticket-container{
+  width: 650px;
+  /* margin: 0 auto; */
+  align-items: left;
+}
+
+
+.form-group {
+  font-weight: 300;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 4px;
+  line-height: 55px;
+}
+
+.reply-title {
+  font-weight: 700px;
+}
+
+.font-small {
+  font-weight: 300;
+}
+
+.reply-content {
+  padding-left: 15px;
+  font-weight: 300;
+}
+
+form.signup-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-weight: 300;
+}
+
+.signup-form-container {
+  width: 400px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 300;
+}
+
+.signup-form-container input[type="text"],
+.signup-form-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signup-form-container button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.signup-form-container button[type="submit"]:hover {
+  background-color: #007bff;
+}
+
+.signup-form-container .error-message {
+  color: red;
+}
+
+.password-form-group {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-page-container {
+  width: 270px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.account-heading {
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 20px;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+
+.account-details {
+  width: 300px;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.detail {
+  margin-bottom: 10px;
+}
+
+.account-label {
+  font-weight: 700;
+}
+
+.account-value {
+  font-weight: 300;
+}
+
+.account-update-link {
+  margin-left: 10px;
+}
+
+.password-update-link {
+  display: block;
+  margin-top: 20px;
+}
+
+/* update data */
+
+.update-account-container {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  width: 270px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.update-account-heading {
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.current-account {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.current-account-name {
+  margin-bottom: 15px;
+  font-weight: 300;
+}
+
+.update-account-form {
+  margin-top: 10px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.update-button {
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.update-button:hover {
+  background-color: #45a049;
+}

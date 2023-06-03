@@ -1,65 +1,67 @@
 {% extends 'base.html' %} {% block title %} Ticket #{{ticket.id}} {% endblock %}
 {% block content %}
+<div class="ticketView-page">
 <div>
-  <table>
-    <h2>Ticket #{{ticket.id}}</h2>
+  <table class="ticketView_table">
+    <h2 class="ticketView-headers">Ticket #{{ticket.id}}</h2>
     <tbody>
       <tr>
-        <td> Title </td>
-        <td> {{ticket.title}} </td>
+        <td> <p class="bold-title">Title</p> </td>
+        <td> <p class="normal-text">{{ticket.title}} </td>
       </tr>
       <tr>
-        <td> Description </td>
-        <td> {{ticket.ticket_content}} </td>
+        <td> <p class="bold-title">Description</p> </td>
+        <td> <p class="normal-text">{{ticket.ticket_content}}</p> </td>
       </tr>
       <tr>
-        <td> Status </td>
-        <td> {{ticket.status}} </td>
+        <td> <p class="bold-title">Status</p> </td>
+        <td> <p class="normal-text">{{ticket.status}}</p> </td>
       </tr>
       <tr>
-        <td> Assignee </td>
-        <td> {{ticket.assignee}} </td>
+        <td> <p class="bold-title">Assignee</p> </td>
+        <td> <p class="normal-text">{{ticket.assignee}}</p> </td>
       </tr>
       <tr>
-        <td> Created by </td>
-        <td> {{ticket.created_by}} </td>
+        <td> <p class="bold-title">Created by</p> </td>
+        <td> <p class="normal-text">{{ticket.created_by}}</p> </td>
       </tr>
       <tr>
-        <td> Description </td>
-        <td> {{ticket.ticket_content}} </td>
+        <td> <p class="bold-title">Created At</p> </td>
+        <td> <p class="normal-text">{{ticket.publication_date}}</p> </td>
       </tr>
       <tr>
-        <td> Created At </td>
-        <td> {{ticket.publication_date}} </td>
-      </tr>
-      <tr>
-        <td> Updated At </td>
-        <td> {{ticket.update_date}} </td>
+        <td> <p class="bold-title">Updated At</p> </td>
+        <td> <p class="normal-text">{{ticket.update_date}}</p> </td>
       </tr>
     </tbody>
   </table>
 </div>
 
 {% if assignee %}
-<h3>Assignee Details</h3>
+<h2 class="ticketView-headers">Assignee Details</h2>
 <p>{{ assignee.username }}</p>
 <p>{{ assignee.email }}</p>
 {% endif %}
 
-<h3>Replies</h3>
+<h2 class="ticketView-headers">Replies:</h2>
 {% for reply in replies %}
 <div class="reply">
-  <p><strong>{{ reply.user.username }}</strong> - {{ reply.timestamp }}</p>
-  <p>{{ reply.message }}</p>
+  <p><strong>{{ reply.user.username }}:</strong>  ({{ reply.timestamp }})</p>
+  <p class="reply-content">{{ reply.message }}</p>
 </div>
 {% endfor %}
 
-<h3>Add more:</h3>
+<!-- <h2 class="ticketView-headers">Add more:</h2> -->
+<div class="reply-ticket-container">
 <form method="POST" action="{% url 'ticketsapp:ticketView' ticket_id=ticket.id %}">
     {% csrf_token %}
-    {{ form.as_p }}
+    <div class="form-group">
+    <h5 class="reply-title"> Add reply: </h5>
+    {{ form.message }}
+    </div>
     <button type="submit">Submit Reply</button>
 </form>
-
+</div>
+</div>
 
 {% endblock %}

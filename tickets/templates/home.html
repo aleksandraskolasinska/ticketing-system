@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
+
 {% block title %} Tickets {% endblock %}
 {% block content %}
 
 {% if user.is_authenticated %}
-<span>
+<span class="home-page-text" style="text-align: center;">
 <a href="{% url 'ticketsapp:create_ticket' %}">Here</a> you can create a new ticket.
 </span>
 {% else %}
-<span>
+<span class="home-page-text" style="text-align: center;"">
 To submit tickets, please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'ticketsapp:signup' %}">create a new account</a>
 </span>
 {% endif %}

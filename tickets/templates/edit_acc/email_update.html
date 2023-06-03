@@ -1,8 +1,17 @@
-<h1>Update Email</h1>
+{% extends 'base.html' %}
+{% block title %} Update email address {% endblock %}
+{% block content %}
 
-<p>Current email: {{ user.email }}</p>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Update</button>
-</form>
+<div class="update-account-container">
+  <h1 class="update-account-heading">Update email:</h1>
+
+  <span class="current-account">Current email:</span> <span class="current-account-name">{{ user.email }}</span>
+
+  <form method="post" class="update-account-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="update-button">Update</button>
+  </form>
+</div>
+
+{% endblock %}

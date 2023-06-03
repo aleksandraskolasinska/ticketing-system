@@ -14,8 +14,6 @@
 
 Practice project for a ticketing system using Django and database in postgres. Allows users to create an account, edit their account data, submit tickets and view their tickets and their current status.
 
-Application is currently still in development, the documentation as well as how the app looks like will change in the near future.
-
 # Installation
 
 This project uses Docker. By default the development server runs on
@@ -92,15 +90,23 @@ Logged in users on the header of the app should see main options such as:
 ![image](/readme_files/dashboard.png)
 
 
-## Sumbitting a ticket
+## Submitting a ticket
 
 To create a ticket simply go to `create a ticket` located on the dashboard and fill in the title as well as the description.
+
+![image](/readme_files/create_ticket.png)
 
 ## Tracking tickets
 
 Tickets can be tracked via the `View sumbited tickets` tab visible on the dashboard. To see details as well as add more information 
 
 ![image](/readme_files/tracking_tickets.png)
+
+## Details and replies with staff
+
+Viewing the details of a submited ticket allows to exchange replies with staff.
+
+![image](/readme_files/ticket_replies.png)
 
 # Administrator manual
 

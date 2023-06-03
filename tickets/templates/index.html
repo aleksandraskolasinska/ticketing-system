@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
+
 {% block title %} Tickets {% endblock %}
 {% block content %}
-<table>
- <thead>
+<div class="index_table_container">
+<table class="index_table">
+ <thead class="index_table_header_names">
     <tr>
-      <th> Ticket title </th>
-      <th> Status     ` </th>
-      <th> Assignee      `</th>
-      <th> Published </th>
-      <th> Last Updated </th>
+      <th class="index_table_header_item"> Ticket title </th>
+      <th class="index_table_header_item"> Status </th>
+      <th class="index_table_header_item"> Assignee </th>
+      <th class="index_table_header_item_date"> Published </th>
+      <th class="index_table_header_item_date"> Last Updated </th>
     </tr>
   </thead>
   <tbody>
@@ -23,4 +25,5 @@
     {% endfor %}
    </tbody>
   </table>
+  </div>
   {% endblock %}
