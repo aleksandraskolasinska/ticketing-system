@@ -125,3 +125,5 @@ and see a redirection to the panel in the Account tab on the dashboard
 In the tickets category in the admin panel, staff will be able to see all tickets, their statuses and when they were last updated.
 
 ![image](/readme_files/admin_panel_view.png)
+
+adding text to test
